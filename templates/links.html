@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div id="links_page">
+
+  <div class="links">
+    <h3>Chemistry and LaTeX</h3>
+
+    <ul >
+      <li>
+	<a href="http://www.ctan.org/pkg/chemfig" target="_blank">Chemfig</a>
+	<span class="description">- an extremely usefull LaTeX package for drwaing chemical structures. The basic knowledge of this package is a must.</span> 
+      </li>
+
+      <li>
+	<a href="http://chimpsky.uwaterloo.ca/mol2chemfig" target="_blank">Mol2chemfig</a>
+	<span class="description">- a python program that renders chemical structures from a molfile or SMILES format to chemfig syntax. </span>
+      </li>
+
+      <li>
+	<a href="http://py-chemist.com/mol_2_chemfig" target="_blank">Mol2chemfig Web</a>
+	<span class="description">is a web application built upon Mol2chemfig package. Provides an user-friendly interface with several usefull features. A more detailed descpription can be found 
+	  <a href="{{ url_for('about')}}">here</a></span>.
+      </li>
+
+      <li>
+	<a href="https://tex.stackexchange.com/" target="_blank">TeX StackExchange</a>
+	<span class="description">is a website that can help if you get stucked and do not know how to solve problems related to LaTeX, do not hesitate to ask a question on TeX StackExchange./span>
+      </li>
+
+    </ul>
+
+  </div>
+
+  <div class="links">
+    <h3>Software used to develop Mol2chemfig Web</h3>
+
+    <ul >
+      <li>
+	<a href="http://flask.pocoo.org/" target="_blank">Flask</a>
+	<span class="description">is a webframework for Python. Minimalistic but very powefull. As name sugests, if you are chemist - use it.</span> 
+      </li>
+
+      <li>
+	<a href="http://web.chemdoodle.com/" target="_blank">ChemDoodle Web Components</a>
+	<span class="description">- a chemical graphics and cheminformatics library for the web. Easy to integrate and use. Has a rich set of functionalities but some services may require registration.</span> 
+      </li>
+
+      <li>
+	<a href="https://github.com/mcs07/PubChemPy" target="_blank">PubChemPy</a>
+	<span class="description">is a very handy python program for interaction with PubChem. Chemical searches by name, retrieval of chemical properties, chemical standardization are only few options out of many that PubChemPy provides.</span>
+      </li>
+
+       
+     
+  </div>
+
+  <div class="db_links">
+    <h3>Chemical Databases</h3>
+   If you need to get information about chemical and physical properties of a compound, check out some of the chemical databases: 	<a href="https://pubchem.ncbi.nlm.nih.gov/" target="_blank">PubChem</a>, <a href="http://www.chemspider.com/" target="_blank">ChemSpider</a>,
+    <a href="http://webbook.nist.gov/chemistry/" target="_blank">NIST Chemistry</a>.
+           
+  </div>
+
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+   {{ super() }}
+{% endblock %}

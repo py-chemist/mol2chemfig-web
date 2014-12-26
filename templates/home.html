@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="grid">
+    <div class="row">
+        <div class="col-4">
+	  <p>Feel free to  use the sketcher if a database search does't meet your needs. Draw the structure and click "Get Mol" to generate mol format.</p>
+          <div id="cd_sketcher">
+	    <script>
+	      var sketcher = new ChemDoodle.SketcherCanvas('sketcher', 400, 300, {useServices:true});
+	      var mol = sketcher.getMolecule();
+	      var molFile = ChemDoodle.writeMOL(mol);
+	      window.onload = function(e){
+	      }
+
+	      function myFunc($data){
+
+	      document.getElementById('txt_area').value = $data;
+	      $('#check_update').hide();
+	      $('#check_reset').hide();
+	      return false;
+	      }
+
+	    </script>
+	  </div> <!-- end sketcher -->
+	  <button type="submit" id="get_mol" onclick="myFunc(ChemDoodle.writeMOL(sketcher.getMolecule()));">Get Mol</button>
+
+	</div> <!-- end col-4 -->
+
+        <div class="col-5">
+	  <form onsubmit="return false;" autocomplete="off"> 
+	    <input type="text" id="chemical"  placeholder="Find a compound by name (e.g. aspirin)" autofocus />
+	    <button type="submit" id="search" value="Search">Search</button>
+
+	    
+	    <textarea id="txt_area" name="smiles_mol"></textarea>
+	    <button type="submit" name="action" id="convert" value="convert">Convert</button>
+	    <!-- <button type="submit" name="action" id="update_latex" value="update_latex">Update Latex</button> -->
+      	    
+	  </form>
+
+	</div> <!-- end col-5 -->
+
+        <div class="col-3">
+	  <iframe id="pdf" src ="{{ pdflink }}" allowfullscreen></iframe>	    	    
+	    
+	  <div class="chb">
+	    <div id="1_col">
+	      <label class="checkboxtext" title="Wrap the code into \chemfig{...}">
+		<input type="checkbox" class="check_box" name="check" value="-w" checked="checked">chemfig
+	      </label><br>
+
+	      <label class="checkboxtext" title="Assign number to each atom except hydrogen">
+		<input type="checkbox" class="check_box" name="check" value="-n">atom-numbers
+	      </label><br>
+
+	      <label class="checkboxtext" title="Show nicer double and triple bonds">
+		<input type="checkbox" class="check_box" name="check" value="-f"/>fancy bonds
+	      </label><br>
+	      
+	      <label class="checkboxtext" title="Show circle in aromatic compounds instead of double bonds">
+		<input type="checkbox" class="check_box"  name="check" value="-o">aromatic
+	      </label><br> 
+
+	      <label class="checkboxtext" title="Show carbon atoms as elements">
+		<input type="checkbox" class="check_box" name="check" value="-c"/>show carbon
+	      </label><br>
+            </div> <!--end 1_col -->
+        
+            <div id="2_col" style="margin-left:5%;">
+	      <label class="checkboxtext" title="Show methyl group as elements">
+		<input type="checkbox" class="check_box" name="check" value="-m"/>show methyl
+	      </label><br>
+              <label class="checkboxtext" title="Flip the structure horizontally">
+		<input type="checkbox" class="check_box" name="check" value="-p"/>flip
+	      </label><br>
+	      
+	      <label class="checkboxtext" title="Flop the strcture vertically">
+		<input type="checkbox" class="check_box" name="check" value="-q"/>flop
+	      </label><br>
+
+    
+	      <input class="checkboxtext" type="text" name="angle" size="2" value="0.0" title="Rotate molecule counterclockwise by this angle.">
+	      <span id="angle_txt">angle</span><br>
+
+	      <select id="H2" name="hydrogens" title="Provide options how to display hydrogen atoms">
+		<option value="keep" selected="selected">keep</option>
+		<option value="add" >add</option>
+		<option value="delete" >delete</option>
+	      </select><span id="text_hydrogens">hydrogens</span><br>
+
+	    </div> <!-- end 2_col --> 	     
+	      
+	    </div> <!-- end chb -->
+	     <a id="more_options" href="http://chimpsky.uwaterloo.ca/mol2chemfig/webiface" target="_blank">Need more options?</a>
+	
+	      <div id="update_reset">
+		<button type="submit" name="update" id="check_update" value="update">Apply</button>
+		<button type="submit" name="reset" id="check_reset" value="reset">Reset</button> 
+	      </div>
+       
+	</div> <!-- end col-3 -->
+
+    </div> <!-- end row -->
+</div> <!-- end grid -->    	
+
+{% endblock %}
+
+{% block scripts %}
+   {{ super() }}
+{% endblock %}

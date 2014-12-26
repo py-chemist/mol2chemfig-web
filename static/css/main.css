@@ -1,0 +1,307 @@
+body {
+	background-image: url('/static/img/bg.png');
+	margin: 0;
+	padding: 0;
+}
+
+.row {
+    width: 100%;
+    display: flex;flex-wrap;
+}
+
+.col-3 {
+    width: 28%;
+}
+
+.col-4 {
+    width: 32%;
+}
+
+.col-5 {
+    width: 40%;
+}
+
+
+/* HEADER */
+
+header {
+    background-color: #2B2B2B;
+    height: 35px;
+    width: 100%;
+    opacity: .9;
+    Margin-Bottom: 10px;
+}
+
+header h1.logo {
+    margin-top: 5px;
+    margin-left: 250px;
+    font-size: 1.2em;
+    color: #fff;
+    font-family: Ubuntu;
+    float: left;
+}
+
+/* MENU */
+
+.menu {
+    float: right;
+    margin-top: 4px;
+}
+
+.menu li {
+    display: inline;
+}
+
+.menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-size:90%;
+    font-family: Ubuntu;
+    margin-right: 50px;
+    
+}
+
+.col-4 p {
+    width: 90%;
+    margin-top: 8%;
+    margin-left: 3%;
+    text-align: center;
+    font-family: Ubuntu Mono;
+    font-size: 105%;
+    line-height: 1.2;
+}
+
+/* SKETCHER */
+
+#cd_sketcher {
+    margin-left: 3%;
+}   
+
+#get_mol {
+    margin-left: 40%;
+}
+
+/* TEXTFIELD */
+input[id="chemical"] {
+    
+    height:25px;
+    width:78%;
+    border: 1px solid #3399FF;
+    background-color: #fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-family: Ubuntu Mono;
+    font-size: 100%;
+    padding: 0px 5px;
+}
+
+/* CHECKBOXES */
+
+input[type="checkbox"] {
+    
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin:1px 5px;
+    vertical-align: bottom;
+    position: relative;
+    top: -3px;
+    *overflow: hidden;
+    border: 1px solid #3399FF;
+}
+
+.chb {
+    display: inline-flex; flex-wrap;
+    margin-left: 10%;
+    margin-top: 5%;
+    line-height: 1.5;  
+    width: 75%;  
+}
+
+
+.checkboxtext{
+  /* Checkbox text */
+  
+  font-size:100%;
+  font-family: Ubuntu Mono; 
+}
+
+input[name="angle"]{
+    margin-left:5px;
+    margin-top: 2px;
+    width: 30%;
+    height: 13px;
+    font-size: 90%;
+    font-family: Ubuntu;	
+}
+
+#angle_txt{
+    font-family: Ubuntu Mono;
+}
+
+#H2{
+    margin-left:5px;
+    width: 55px;
+}
+
+#text_hydrogens {
+    font-family: Ubuntu Mono;
+    padding-left:2px;
+}
+
+#more_options {
+    display: inline-block;
+    margin-left: 30%;
+    font-family: Ubuntu Mono;
+    font-size: 80%;
+}
+
+/* TEXTAREA */
+
+textarea{
+    width: 90%;
+    height: 480px;
+    margin-top: 10px;
+    border:1px solid #3399FF;
+    background-color: #fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 100%;
+    font-family: Ubuntu Mono;
+    padding: 2px 5px;
+}
+
+/* BUTTONS */
+
+button, input[name="button"]{
+	
+    height:30px;
+    /* font-weight:bold; */
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 2px solid  #3399FF;
+    text-align: center;
+    color: #000000;
+    background-color: white;
+    font-family: Ubuntu;
+    /* font-weight: bold; */  
+}
+
+#get_mol{
+    margin-top: 5px;
+}
+
+#convert {
+    margin-top: 5px;
+    margin-left: 35%;
+}
+
+#update_reset {
+    margin-top: 20px;
+    margin-left:30%;
+}
+
+#check_reset{ 
+ 	border: 2px solid #CC3300; 
+ } 
+
+/* IFRAME */
+
+iframe {
+    margin-top: 10%;
+    border: 1px solid  #3399FF;
+    background-color: #fff;
+    width : 90%;
+    height : 220px;
+/*    margin-left: 3%;*/
+}
+
+
+
+
+/* LINKS PAGE */
+
+#links_page {
+    width: 70% ;
+    /* background-color:yellow; */
+    margin: 3% auto;
+}
+
+ul
+{
+list-style-type: none;
+line-height: 1.7;
+padding: 0;
+}
+
+ul li {
+    margin-left:0px;
+}
+
+
+.links li a{
+    color: blue;
+    text-decoration: none;
+    font-size:100%;
+    font-family: Ubuntu;
+}
+
+.description {
+    margin-left: 10px;
+    font-family: Ubuntu Mono;
+    font-size: 100%;
+}
+
+h3 {
+    text-align: center;
+    font-family: Ubuntu;
+}
+
+.db_links {
+    font-family: Ubuntu Mono;
+    line-height: 1.7;
+    
+}
+
+.db_links a {
+    color: blue;
+    text-decoration: none;
+    font-size:100%;
+    font-family: Ubuntu Mono;
+}
+
+/* ABOUT PAGE */
+
+#text_about{
+    width: 75% ;
+    /* background-color:yellow; */
+    margin: 3% auto;
+}
+
+#text_about p{
+    text-align: justify;
+    font-family: Ubuntu Mono;
+    line-height: 1.5;
+}
+
+#text_about a{
+    text-decoration:none;
+}
+
+ul ol li {
+    font-family: Ubuntu Mono;
+    color: green;
+}
+
+.features_description {
+    font-family: Ubuntu Mono;
+}
+
+.features {
+    font-family: Ubuntu;
+    font-size: 95;
+    color: green;
+}

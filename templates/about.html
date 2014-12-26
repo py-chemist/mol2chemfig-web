@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div id="text_about">
+
+  <h3>Attention!&nbsp; Achtung!</h3>
+  <p> I am a chemist not a programmer so I assume that there are some bugs left and there is a room for improvements. Mol2chemfig Web comes without any warranty! Feel free to use, share, modify the code at no cost but the use of Mol2chemfig Web in commercial projects is prohibited. If you need to use programs/libraries used to develop Mol2chemfig Web, please contact the corresponding authors directly.</p>
+
+  <h3>Features</h3>
+
+  <p>Mol2chemfig Web is a web interface built on top of Mol2chemfig program maintained by <a href="http://science.uwaterloo.ca/~mpalmer/contact.html" target="_blank">Prof. M. Palmer</a>. The main goal of the project is to provide a user-friendly interface for generating and modifying chemical structures depicted in chemfig format for LaTeX documents. Web application includes the following features: </p>
+  
+  <p>
+    <span class="features">Integrated database search</span><br> 
+    <span class="features_description">Finds an inquired coumpound by name and returns a smiles string.</span>
+  </p>
+
+  <p>
+    <span class="features">Integrated Chemdoodle sketcher</span><br>
+    <span class="features_description">If a requested compound was not found in the database, a user draws the structure and mol format is generated.</span>
+  </p>
+
+  <p>
+      <span class="features">Embeded pdfviewer</span><br>
+      <span class="features_description">After converting of smiles or mol format to chemfig, a pdf file with a resulted structure will be displayed in the pdfviewer.</span>
+  </p>
+
+  <p>
+      <span class="features">"Select - Apply" fuctionality</span></br>
+      <span class="features_description">A user can modify the structure by selecting and applying desired options. A newly generated pdf displays all modifications. Currently ten options are present. Other options can be added upon request.</span>
+  </p>
+
+  <p>
+      <span class="features">Live updates on chemfig code  modifications</span><br>
+      <span class="features_description">A user can modify chemfig code directly (i.e. to change the angle of a bond or to change a functional group). Every single modification is synchronized with pdfviewer.</span>
+  </p>
+
+  <p>
+      <span class="features">Notifications via javascript alerts and pdfviewer</span><br>
+      <span class="features_description">If something goes wrong, for example a drawn structure contains a 5-valence carbon or modified chemfig code is broken (cannot generate a pdf), a user will be notified via alerts or pdfviewer.</span>
+  </p>
+
+  <h3>Contact</h3>
+  <p>Comments, sugestions, bug reporst and constructive critic are very welcome. Also, if you would like to see more features, do not to hesitate to contact me at py.chemist@gmail.com. The source code of Mol2chemfig Web can be found on this page.</p>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+   {{ super() }}
+{% endblock %}

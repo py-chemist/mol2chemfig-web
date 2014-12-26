@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Mol2chemfig Web</title>
+        <meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+	<link href="http://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet" type="text/css">
+	<link href="{{ url_for('static', filename='css/main.css')}}" rel='stylesheet' type='text/css'>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="{{ url_for('static', filename='js/ViewerJS') }}"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+	
+
+	<!-- ChemDoodle -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='ChemDoodle/install/ChemDoodleWeb.css')}}" type="text/css">
+	<script type="text/javascript" src="{{ url_for('static', filename='ChemDoodle/install/ChemDoodleWeb.js')}}"></script>
+				 
+	<!--these two are required by the SketcherCanvas plugin-->
+	<link rel="stylesheet" href="{{ url_for('static', filename='ChemDoodle/install/uis/jquery-ui-1.10.3.custom.css')}}" type="text/css">
+	<script type="text/javascript" src="{{ url_for('static', filename='ChemDoodle/install/uis/ChemDoodleWeb-uis.js')}}"></script>
+	
+	
+    </head>
+    <body>
+
+      <header>
+	<div class="container">
+	  <h1 class="logo">Mol2chemfig Web</h1>
+	  <nav>
+	    <ul class="menu">
+	      <li><a href="{{ url_for('home') }}">Home</a></li>
+	      <li><a href="{{ url_for('links') }}">Links</a></li>
+	      <li><a href="{{ url_for('about') }}">About</a></li>
+	    </ul>
+	  </nav>
+	</div>
+     </header>
+
+     {% block content %}
+     	
+
+     {% endblock %}
+
+      
+      {% block scripts %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        
+      {% endblock %}
+    </body>
+</html>
