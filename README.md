@@ -6,7 +6,7 @@ Finds an inquired coumpound by name and returns a smiles string.
 
 **Integrated Chemdoodle sketcher:**
 
-If a requested compound was not found in the database, a user draws the structure and mol format is generated.
+If a requested compound was not found in the database, a user draws the structure in the ChemDoodle sketcher and mol format is generated.
 
 **Embeded pdfviewer:**
 
