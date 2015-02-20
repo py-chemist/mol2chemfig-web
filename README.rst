@@ -1,6 +1,6 @@
 Mol2chemfig Web is a web interface built on top of Mol2chemfig program maintained by Prof. M. Palmer(a huge THANK YOU!). The main goal of the project is to provide a user-friendly interface for generating and modifying chemical structures depicted in chemfig format for LaTeX documents. Web application includes the following features: 
 
-**Integrated database search:**
+**Integrated database search:**<br>
 Finds an inquired coumpound by name and returns a smiles string.
 
 **Integrated Chemdoodle sketcher:**
