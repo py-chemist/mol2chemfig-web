@@ -7,7 +7,7 @@ Mol2chemfig Web is a web interface built on top of Mol2chemfig program maintaine
 **Integrated Chemdoodle sketcher:**
 If a requested compound was not found in the database, a user draws the structure and mol format is generated.
 
-#####Embeded pdfviewer
+##### Embeded pdfviewer
 After converting of smiles or mol format to chemfig, a pdf file with a resulted structure will be displayed in the pdfviewer.
 
 **"Select - Apply" fuctionality:**
