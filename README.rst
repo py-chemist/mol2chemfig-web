@@ -2,7 +2,7 @@ Mol2chemfig Web is a web interface built on top of Mol2chemfig program maintaine
 
 **Integrated database search:**
 
-Finds an inquired coumpound by name and returns a smiles string.
+    Finds an inquired coumpound by name and returns a smiles string.
 
 **Integrated Chemdoodle sketcher:**
 If a requested compound was not found in the database, a user draws the structure and mol format is generated.
