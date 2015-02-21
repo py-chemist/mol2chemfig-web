@@ -36,4 +36,4 @@ Also, you will need to modify a path to mol2chemfig.sty file (m2pkg_path in mol2
 
 ##### Comments/suggestions/bug reports
 
-Comments, suggestions, bug reports and constructive critic are very welcomed and can be sent to py-chemist@gmail.com
+Comments, suggestions, bug reports and constructive critic are very welcomed and can be sent to py.chemist@gmail.com
