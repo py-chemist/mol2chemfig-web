@@ -1,4 +1,4 @@
-**Mol2chemfig Web** is a web interface built on top of Mol2chemfig program maintained by [Prof. M. Palmer](http://science.uwaterloo.ca/~mpalmer/contact.html) (a big THANK YOU!). The main goal of the project is to provide a user-friendly interface for generating and modifying chemical structures depicted in chemfig format for LaTeX documents. Web application includes the following features: 
+**Mol2chemfig Web** is a web interface built on top of Mol2chemfig program maintained by [Prof. M. Palmer](http://science.uwaterloo.ca/~mpalmer/contact.html). The main goal of the project is to provide a user-friendly interface for generating and modifying chemical structures depicted in chemfig format for LaTeX documents. Web application includes the following features: 
 
 **Integrated database search:**
 
