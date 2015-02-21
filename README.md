@@ -12,7 +12,7 @@ If a requested compound was not found in the database, a user draws the structur
 
 After converting of smiles or mol format to chemfig, a pdf file with a resulted structure will be displayed in the pdfviewer.
 
-**"Select - Apply" fuctionality:**
+**"Select - Apply" functionality:**
 
 A user can modify the structure by selecting and applying desired options. A newly generated pdf displays all modifications. Currently ten options are present. Other options can be added upon request.
 
