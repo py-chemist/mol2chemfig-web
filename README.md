@@ -19,3 +19,15 @@ A user can modify the structure by selecting and applying desired options. A new
 **Live updates on chemfig code modifications:**
 
 A user can modify chemfig code directly (i.e. to change the angle of a bond or to change a functional group). Every single modification is synchronized with pdfviewer.
+
+If you want to run Mol2chemfig Web locally you will need to install the following packages:
+
+* [Flask](http://flask.pocoo.org/) -  ```pip install Flask ```
+
+* [Pubchempy](https://github.com/mcs07/PubChemPy) - ```pip install pubchempy```
+
+* Python-indigo  - ```sudo apt-get install python-indigo```
+
+* Pdflatex
+
+Also, you will need to modify a path to mol2chemfig.sty file (m2pkg_path in mol2chemfig/pdfgen.py) in order to get a pdf file generated. 
