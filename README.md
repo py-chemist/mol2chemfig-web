@@ -22,7 +22,7 @@ A user can modify chemfig code directly (i.e. to change the angle of a bond or t
 
 ##### Local installation
 
-If you want to run Mol2chemfig Web locally you will need to install the following packages:
+If you want to run Mol2chemfig Web locally, you will need to install the following packages:
 
 * [Flask](http://flask.pocoo.org/) -  ```pip install Flask ```
 
