@@ -34,6 +34,14 @@ If you want to run Mol2chemfig Web locally, you will need to install the followi
 
 Also, you will need to modify a path to mol2chemfig.sty file (m2pkg_path in mol2chemfig/pdfgen.py) in order to get a pdf file generated. 
 
+##### Acknowledgments
+
+I would like to acknowledge the work of all the authors of programs/libraries (Chemfig, Mol2chemfig, ChemDoodle Web Components, PubchemPy, Indigo) I used to develop the web interface.
+
+##### License
+
+Mol2chemfig Web (web interface only) is licensed under version 3 of the [GNU GENERAL PUBLIC LICENSE](https://www.gnu.org/licenses/gpl-3.0.html)
+
 ##### Comments/suggestions/bug reports
 
 Comments, suggestions, bug reports and constructive critic are very welcomed and can be sent to py.chemist@gmail.com
