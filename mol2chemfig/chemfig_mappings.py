@@ -6,9 +6,9 @@ the TeX syntax defined by the chemfig package.
 '''
 
 import textwrap
-import common
+from . import common
 
-from common import debug
+from .common import debug
 
 BOND_CODE_WIDTH = 50        # space for bonds - generous upfront, will be trimmed at the end
 TERSE_LINE_WIDTH = 75       # in terse code format, force linebreaks

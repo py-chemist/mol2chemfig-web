@@ -5,7 +5,7 @@ Through-the-web command line client for mol2chemfig.
 Depends only on Python standard library modules.
 '''
 
-import sys, httplib, urllib
+import sys, http.client, urllib.request, urllib.parse, urllib.error
 
 serverUrl = "localhost:80"
 servlet = "/mol2chemfig/test"
@@ -14,10 +14,10 @@ def rpc(**data):
     '''
     send rpc request and return response data
     '''
-    params = urllib.urlencode(data)
+    params = urllib.parse.urlencode(data)
     headers = {"Content-type": "application/x-www-form-urlencoded"}
 
-    conn = httplib.HTTPConnection(serverUrl)
+    conn = http.client.HTTPConnection(serverUrl)
     conn.request("POST", servlet, params, headers)
 
     response = conn.getresponse()
@@ -47,5 +47,5 @@ else:
 
 result = rpc(progname=progname, options=rawoptions, cargo=data)
 
-print result
+print(result)
 

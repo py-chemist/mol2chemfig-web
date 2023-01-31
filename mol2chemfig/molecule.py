@@ -4,11 +4,11 @@ parse a molfile molecule and render to chemfig code
 
 import math, sys
 
-import chemfig_mappings as cfm
-from common import MCFError, Counter, debug
+from . import chemfig_mappings as cfm
+from .common import MCFError, Counter, debug
 
-from atom import Atom
-from bond import Bond, DummyFirstBond, AromaticRingBond, compare_positions
+from .atom import Atom
+from .bond import Bond, DummyFirstBond, AromaticRingBond, compare_positions
 
 from indigo import IndigoException
 
@@ -24,7 +24,7 @@ class Molecule(object):
         self.atoms = self.parseAtoms()
 
         # now it's time to flip and flop the coordinates
-        for atom in self.atoms.values():
+        for atom in list(self.atoms.values()):
             if self.options['flip_horizontal']:
                 atom.x = -atom.x
             if self.options['flip_vertical']:
@@ -35,7 +35,7 @@ class Molecule(object):
         # work out the angles for each atom - this is used for
         # positioning of implicit hydrogens and charges.
 
-        for connection, bond in self.bonds.items():
+        for connection, bond in list(self.bonds.items()):
             first_idx, last_idx = connection
             self.atoms[first_idx].bond_angles.append(bond.angle)
 
@@ -81,7 +81,7 @@ class Molecule(object):
 
         # let each atom work out its preferred quadrant for placing
         # hydrogens or charges
-        for atom in self.atoms.values():
+        for atom in list(self.atoms.values()):
             atom.score_angles()
 
         # finally, render the thing and cache the result.
@@ -233,7 +233,7 @@ class Molecule(object):
                     bond = self.bonds[combo]
                     break
             else: # referenced bond doesn't exist
-                raise MCFError, "bond %s-%s doesn't exist" % (start1, end1)
+                raise MCFError("bond %s-%s doesn't exist" % (start1, end1))
 
             # very special case: the bond _might_ already be the very
             # last one to be rendered - then we just tag it
@@ -295,7 +295,7 @@ class Molecule(object):
 
             scored.append((distance, len(bond.descendants), bond))
 
-        scored.sort()
+        scored.sort(key=lambda el: el[0])
         return scored[-1][-1]
 
 
@@ -308,17 +308,17 @@ class Molecule(object):
         if self.options['entry_atom'] is not None:
             entry_atom = self.atoms.get(self.options['entry_atom'] - 1) # -> zero index
             if entry_atom is None:
-                raise MCFError, 'Invalid entry atom number'
+                raise MCFError('Invalid entry atom number')
 
         else: # pick a default atom with few neighbors
-            atoms = self.atoms.values()
+            atoms = list(self.atoms.values())
             atoms.sort(key=lambda atom: len(atom.neighbors))
             entry_atom = atoms[0]
 
         if self.options['exit_atom'] is not None:
             exit_atom = self.atoms.get(self.options['exit_atom'] - 1) # -> zero index
             if exit_atom is None:
-                raise MCFError, 'Invalid exit atom number'
+                raise MCFError('Invalid exit atom number')
         else:
             exit_atom = None
 
@@ -567,7 +567,7 @@ class Molecule(object):
 
         # prefer aromatic rings to nonaromatic ones, so that double bonds on
         # fused rings go preferably into aromatic rings
-        all_rings.sort()
+        all_rings.sort(key=lambda t:t[0])
 
         for is_aromatic, ring in reversed(all_rings):
             self.annotateRing(ring, is_aromatic)
@@ -675,7 +675,7 @@ class Molecule(object):
         sinalpha = math.sin(alpha)
         cosalpha = math.cos(alpha)
 
-        for atom in self.atoms.values():
+        for atom in list(self.atoms.values()):
             x, y = atom.x, atom.y
 
             xt = x * cosalpha - y * sinalpha

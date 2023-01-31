@@ -1,8 +1,8 @@
 import math, string
 
-import chemfig_mappings as cfm
+from . import chemfig_mappings as cfm
 
-from common import debug
+from .common import debug
 
 # some atoms should carry their hydrogens to the left, rather than
 # to the right. This is applied to solitary atoms, but not to bonded
@@ -88,7 +88,7 @@ class Atom(object):
 
             aux.append((score, priority, name))
 
-        aux.sort()
+        aux.sort(key=lambda t:t[0])
 
         #if self.element == 'Cl':
             #debug(aux)

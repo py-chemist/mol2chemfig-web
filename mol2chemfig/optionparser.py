@@ -195,7 +195,7 @@ class SelectOption(Option):
         try:
             return self.valid_range[0]
         except (TypeError, IndexError):
-            raise OptionError, 'valid_range does not supply default'
+            raise OptionError('valid_range does not supply default')
 
 
     def _validate(self, value):
@@ -212,7 +212,7 @@ class SelectOption(Option):
         options = []
 
         if not self.default in self.valid_range: # why am I doing this here?
-            raise OptionError, 'invalid default'
+            raise OptionError('invalid default')
 
         for option in self.valid_range:
             if option == value:
@@ -295,9 +295,9 @@ class OptionParser(object):
 
     def append(self, option):
         if option.short_name in self._options_by_name:
-            raise OptionError, "option name clash %s" % option.short_name
+            raise OptionError("option name clash %s" % option.short_name)
         if option.long_name in self._options_by_name:
-            raise OptionError, "option name clash %s" % option_short_name
+            raise OptionError("option name clash %s" % option_short_name)
 
         self._options_by_name[option.short_name] = option.key
         self._options_by_name[option.long_name] = option.key
@@ -311,7 +311,7 @@ class OptionParser(object):
         '''
         required by the web form front end
         '''
-        return self._option_by_key.keys()
+        return list(self._option_by_key.keys())
 
 
     def option_values(self):
@@ -336,7 +336,7 @@ class OptionParser(object):
         '''
         warnings = []
 
-        for key, value in fields.items():
+        for key, value in list(fields.items()):
             option = self._options_by_key[key]
             if not option.validate_form_value(value):
                 msg = 'Invalid value %s for option %s ignored' % (value, option.form_text)
@@ -368,7 +368,7 @@ class OptionParser(object):
                 msg = ["rejected value '%s' for option %s" % (value, optname)]
                 msg.append('Option usage:')
                 msg.extend(option.format_help())
-                raise OptionError, '\n'.join(msg)
+                raise OptionError('\n'.join(msg))
 
         return self.option_values(), args
 
@@ -427,7 +427,7 @@ if __name__ == '__main__':  # test it
                 'count',
                 'c',
                 default=5,
-                valid_range=range(10),
+                valid_range=list(range(10)),
                 help_text="how many apples to buy"))
 
     p.append(StringOption(
@@ -451,8 +451,8 @@ if __name__ == '__main__':  # test it
     rawinput = "-a -c 6 -p LP alpha beta gamma"
     options, args = p.process_cli(rawinput)
 
-    print 'options', options
-    print 'args', args
-    print
-    print p.format_help()
-    print
+    print(('options', options))
+    print(('args', args))
+    print()
+    print((p.format_help()))
+    print()

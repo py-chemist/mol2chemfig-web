@@ -2,7 +2,7 @@
 option declarations. The options will be used to update the
 settings dict in module common.
 '''
-from optionparser import *
+from .optionparser import *
 
 def getParser():
     '''
@@ -217,15 +217,15 @@ def getParser():
 
 if __name__ == '__main__': # test code
     parser = getParser()
-    print parser.format_help(indent=32,linewidth=80,separator='')
-    print
+    print((parser.format_help(indent=32,linewidth=80,separator='')))
+    print()
     shorts, longs = parser.format_for_getopt()
-    print longs
-    print shorts
+    print(longs)
+    print(shorts)
 
     # list unused option letters
     from string import ascii_lowercase as letters
-    print "unused short options:", ','.join(set(letters) - set(shorts))
+    print(("unused short options:", ','.join(set(letters) - set(shorts))))
 
     #print
     #tags = parser.form_tags()

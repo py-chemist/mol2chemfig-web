@@ -15,14 +15,18 @@ def smiles_mol_to_chemfig(*args):
     if success:
         pdfsuccess, pdfresult = pdfgen.pdfgen(result)        
         if pdfsuccess:
-            encoded = base64.encodestring(pdfresult)
+            encoded = base64.b64encode(pdfresult).decode("utf-8")
             pdflink = "data:application/pdf;base64,{}".format(encoded)
         else:
-            pdflink = 'pdf generation foobared'            
+            pdflink = 'pdf generation foobared'
+    else:
+        raise ValueError(result)
+
     try:    
         outcome = result.render_user()
         return outcome, pdflink 
-    except AttributeError:
+    except AttributeError as e:
+        print(e)
         error = "Chemfig cannot be generated"
         return None, error
         
