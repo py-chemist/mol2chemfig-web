@@ -5,8 +5,8 @@ My name is Bond. JAMES Bond.
 from copy import deepcopy, copy
 from math import atan, tan, pi
 
-import chemfig_mappings as cfm
-from common import debug
+from . import chemfig_mappings as cfm
+from .common import debug
 
 # bond stereo properties and valences
 from indigo import Indigo
@@ -405,7 +405,7 @@ class Bond(object):
         if self.start_atom.explicit:
             start = 0
         else:
-            start_angles = self.upstream_angles().values()
+            start_angles = list(self.upstream_angles().values())
             if start_angles[0] is not None:
                 start = self.cotan100(0.5 * min(start_angles))
             else:
@@ -414,7 +414,7 @@ class Bond(object):
         if self.end_atom.explicit:
             end = 0
         else:
-            end_angles = self.downstream_angles().values()
+            end_angles = list(self.downstream_angles().values())
             if end_angles[0] is not None:
                 end = self.cotan100(0.5 * min(end_angles))
             else:

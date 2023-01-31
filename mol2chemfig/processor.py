@@ -3,10 +3,10 @@ accept input from command line or through the web and
 return the result.
 '''
 
-import urllib, os.path, traceback
+import urllib.request, urllib.parse, urllib.error, os.path, traceback
 from indigo import Indigo, IndigoException
 
-import common, options, molecule
+from . import common, options, molecule
 
 class HelpError(common.MCFError):
     pass
@@ -58,16 +58,16 @@ class Processor(object):
         if not self.rawargs and not self.data:
             ht = self.help_text()
 
-            raise HelpError, ht
+            raise HelpError(ht)
 
         # parse options and arguments
         try:
             parsed_options, datalist = self.optionparser.process_cli(self.rawargs)
-        except Exception, msg:
+        except Exception as msg:
             if str(msg).endswith('not recognized'): # getopt error
                 msg = str(msg) + \
                       ". Try %s --help to see a list of available options." % self.progname
-            raise HelpError, msg
+            raise HelpError(msg)
 
         # if we get here, we have parsed options and a possibly empty datalist
         self.options.update(parsed_options)
@@ -75,9 +75,9 @@ class Processor(object):
         # before we go on to check on the data, we will satisfy help requests,
         # which we treat like an error
         if self.options['help']:
-            raise HelpError, self.help_text()
+            raise HelpError(self.help_text())
         elif self.options['version']:
-            raise HelpError, self.version_text()
+            raise HelpError(self.version_text())
 
         if self.data is not None:
             datalist.append(self.data)
@@ -87,8 +87,8 @@ class Processor(object):
 
         if len(datalist) != 1:
             if not datalist:
-                raise common.MCFError, "No input data supplied"
-            raise common.MCFError, "Please give only one file or data string as input"
+                raise common.MCFError("No input data supplied")
+            raise common.MCFError("Please give only one file or data string as input")
 
         data = datalist[0]
 
@@ -96,7 +96,7 @@ class Processor(object):
             try:
                 data = open(data).read()
             except IOError:
-                raise common.MCFError, "Can't read file %s" % data
+                raise common.MCFError("Can't read file %s" % data)
 
         self.data_string = data
 
@@ -108,7 +108,7 @@ class Processor(object):
         parsed_options, warnings = self.optionparser.process_form_fields(self.formfields)
 
         if warnings:
-            raise common.MCFError, '<br/>\n'.join(warnings)
+            raise common.MCFError('<br/>\n'.join(warnings))
 
         # no warnings ...
         self.options.update(parsed_options)
@@ -154,9 +154,9 @@ class Processor(object):
         if pubchemId is not None:
             try:
                 url = common.pubchem_url % pubchemId
-                pubchemContent = urllib.urlopen(url).read()
+                pubchemContent = urllib.request.urlopen(url).read()
             except IOError:
-                raise common.MCFError, 'No connection to PubChem'
+                raise common.MCFError('No connection to PubChem')
 
             self.data_string = pubchemContent
 
@@ -166,7 +166,7 @@ class Processor(object):
         try:
             tkmol = Indigo().loadMolecule(self.data_string)
         except IndigoException:
-            raise common.MCFError, "Invalid input data"
+            raise common.MCFError("Invalid input data")
 
         hydrogens = self.options['hydrogens']
 
@@ -197,15 +197,15 @@ def process(rawargs=None,
     try:
         mol = p.process()
 
-    except HelpError, msg:
+    except HelpError as msg:
         return False, msg
 
-    except common.MCFError, msg:    # anticipated error - brief message enough
+    except common.MCFError as msg:    # anticipated error - brief message enough
         msg = traceback.format_exc().splitlines()[-1]
         msg = msg[len('MCFError: '):]
         return False, msg
 
-    except Exception, msg:               # unexpected error - get full traceback
+    except Exception as msg:               # unexpected error - get full traceback
         tb = traceback.format_exc()
         return False, tb
 

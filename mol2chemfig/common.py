@@ -2,7 +2,7 @@
 common settings and a bit of infrastructure
 '''
 import sys
-from options import getParser
+from .options import getParser
 
 _debug = False
 
@@ -17,7 +17,7 @@ def debug(*args):
     if not _debug:
         return
     args = [str(a) for a in args]
-    print >> _debug_file, " ".join(args)
+    print(" ".join(args), _debug_file)
 
 class MCFError(Exception):
     '''
@@ -103,7 +103,7 @@ class Counter(object):
             self._d[val] += 1
 
     def most_common(self):
-        lst = self._d.items()
+        lst = list(self._d.items())
         lst.sort(key=lambda pair: pair[1])
 
         return lst[-1][0]

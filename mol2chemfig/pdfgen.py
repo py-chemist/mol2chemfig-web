@@ -4,23 +4,25 @@ return the result in a string.
 '''
 import os, shutil
 from tempfile import mkdtemp
+from pathlib import Path
 
 latexfn = 'molecule.tex'
 pdfname = 'molecule.pdf'
-latexcmd = 'pdflatex -interaction=nonstopmode %s > /dev/null' % latexfn
+latexcmd = 'pdflatex -interaction=nonstopmode -verbose %s' % latexfn
 
-m2pkg_path = '/home/py-chemist/Projects/git_control/mol_2_chemfig/mol2chemfig'
-pkg = '/mol2chemfig.sty'
+m2pkg_path = 'mol2chemfig'
+pkg = 'mol2chemfig.sty'
 
 def pdfgen(mol):
     tempdir = mkdtemp()
-    os.symlink(m2pkg_path + pkg, tempdir + pkg)
+    shutil.copy(Path(m2pkg_path) / pkg, Path(tempdir) / pkg)
+	
 
     chemfig = mol.render_server()    
     width, height = mol.dimensions()
 
-    atomsep = 16
-    fixed_extra = 28
+    atomsep = 35
+    fixed_extra = 30
     
     width = round(atomsep * width) + fixed_extra
     height = round(atomsep * height) + fixed_extra
@@ -38,7 +40,7 @@ def pdfgen(mol):
     os.system(latexcmd)
 
     try:
-        pdfstring = open(pdfname).read()
+        pdfstring = open(pdfname, "rb").read()
     except IOError:
         return False, None
     finally:
